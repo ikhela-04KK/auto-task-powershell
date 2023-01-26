@@ -7,4 +7,5 @@
     #* s'il y ' a une image au format specifier , il faut que tu passe 
 
 #? TROISIEME PARTIE
-    #* 
+    #* Utiliser les methodes asynchrone pour aller encore plus rapidement 
+    #* utiliser les methodes de gestions de memoires comme illustrer de l'autr côté 
