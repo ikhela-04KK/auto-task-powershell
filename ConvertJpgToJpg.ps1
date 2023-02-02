@@ -3,7 +3,8 @@
  
 
 #!Exception lors de l'appel de «FromFile» avec «1» argument(s): «Mémoire insuffisante.
-#! le problèm epeut se trouver dans les dossiers 
+#! le problèm peut se trouver dans les dossiers
+ 
 #met en silience toutes les erreurs dans mon code
 # $ErrorActionPreference = "SilentlyContinue" 
 
