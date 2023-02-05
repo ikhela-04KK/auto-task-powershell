@@ -3,15 +3,18 @@
  
 
 #!Exception lors de l'appel de «FromFile» avec «1» argument(s): «Mémoire insuffisante.
-#! le problèm peut se trouver dans les dossiers
- 
+#! le problème peut se trouver dans les dossiers
+
+#! Exception calling "FromFile" with "1" argument(s): "C:\Users\ikhela\Downloads\convert_folder\C:\Users\ikhela\Downloads\convert_folder\Email.png"
+
+#!  You cannot call a method on a null-valued expression
 #met en silience toutes les erreurs dans mon code
-# $ErrorActionPreference = "SilentlyContinue" 
+# $ErrorActionPreference = "SilentlyContinue"  
 
 # Charger l'assembly System.Drawing
 [System.Reflection.Assembly]::LoadWithPartialName('System.Drawing')
 
-# link folder where you stock your images
+# link folder where you stock your imagesj
 $folder = "C:\Users\ikhela\Downloads\convert_folder\"
 
 #listes des nouveaux fichiers créés
@@ -23,14 +26,13 @@ Write-Host "$files"
 # Boucle pour convertir chaque fichier
 
 foreach ($file in $files) {
-    # $list_new_file = @()
-    # Obtenir le chemin complet du fichier
-    $filePath = $folder + $file
-    Write-Host "$file"
+    # $filePath = $folder + $file
+    # Write-Host "$filePath file "
     # Charger l'image
-    $image =[System.Drawing.Image]::FromFile($filePath)
+    $image =[System.Drawing.Image]::FromFile($file)
     Write-Host "$image"
-    # Définir le nouveau nom de fichier
+    # Définir le nouveau nom de fichier)
+   ; 
     $newFile = $file.BaseName + ".jpeg"
     Write-Host "$newFile"    
     $newFileJpeg = $folder + $newFile
@@ -41,18 +43,21 @@ foreach ($file in $files) {
     
     # Message de verification
     if(Test-Path $newFileJpeg ){
+        
+
         Write-Host "Le fichier $file a été converti en $newFile"
+        #marquer un temps d'arrêt
+        $image.Dispose() #permet de liberer les ressources qui ont été utilisé par conversion d'image
+        Remove-Item $file
     }
     else{
         Write-Host "Le fichier $file n'a pas été converti en Jpeg"
     }    
-    
-    Start-Sleep -Seconds 2 #marquer un temps d'arrêt
-    $image.Dispose() #permet de liberer les ressources qui ont été utilisé par conversion d'image
+    Start-Sleep -Seconds 2
 
     
     
-    # Remove-Item $filePath -Force
+    
 
     #creation d'un tableau et ajouter les nouveaux fichiers crées
     # $list_new_file.add($newFile)
