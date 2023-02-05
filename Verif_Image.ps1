@@ -6,7 +6,7 @@ $image_extensions = @("JPEG","JPG","PNG","SVG")
 #* Parcourir les dossiers et verifer s'il y'a des images
 $folders = Get-ChildItem -recurse -Directory
 
-ForEach($folder in $folder){
+ForEach($folders in $folder){
     #* specfique extensions d'image
     $file_v = (Get-Item $(Get-ChildItem $folder -Filter "*.JPEG"))
     if ($file_v.Extension -in $image_extensions){
