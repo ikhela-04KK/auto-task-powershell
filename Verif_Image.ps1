@@ -1,21 +1,30 @@
 #? PREMIRE PARTIE 
 
+
+#! A positional parameter cannot be found that accepts argument '+JPEG JPG PNG SVG[i]
 #* listes des extensions d'images qui existent 
 $image_extensions = @("JPEG","JPG","PNG","SVG")
 
 #* Parcourir les dossiers et verifer s'il y'a des images
-$folders = Get-ChildItem -recurse -Directory
+# $folders = Get-ChildItem -recurse -Directory
+$folders = "C:\Users\ikhela\Downloads\"
 
-ForEach($folders in $folder){
+ForEach($folder in $folders){ 
     #* specfique extensions d'image
-    $file_v = (Get-Item $(Get-ChildItem $folder -Filter "*.JPEG"))
-    if ($file_v.Extension -in $image_extensions){
-        Write-Host "$folder contient une image"
-        Write-Host "Image est $file_v.Name"
-    }
-    else{
-        #* s'il n' y a pas d'image il faut afficher le dossier le lien du fichier ou il n'y a pas d'image
-        Write-Host "$folder contient pas d'image"
+
+    #* initialiser une boucle for 
+    for ($i = 0; $i -lt $image_extensions.Count; $i++) {
+        <# Action that will repeat until the condition is met #>
+
+        $file_v = (Get-Item $(Get-ChildItem $folder -Filter "*."+$image_extensions[i]))
+        if ($file_v.Extension -in $image_extensions){
+            Write-Host "$folder contient une image"
+            Write-Host "Image est $file_v.Name"
+        }
+        else{
+            #* s'il n' y a pas d'image il faut afficher le dossier le lien du fichier ou il n'y a pas d'image
+            Write-Host "$folder contient pas d'image"
+        } 
     }
 }
  
