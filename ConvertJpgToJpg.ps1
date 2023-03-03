@@ -1,15 +1,8 @@
 # ceci est un script qui permet de convertir un fichier jpg en jpeg tout en utilisant la technologie ChatGpt
 # Définir le répertoire contenant les fichiers JPG
- 
 
-#!Exception lors de l'appel de «FromFile» avec «1» argument(s): «Mémoire insuffisante.
-#! le problème peut se trouver dans les dossiers
-
-#! Exception calling "FromFile" with "1" argument(s): "C:\Users\ikhela\Downloads\convert_folder\C:\Users\ikhela\Downloads\convert_folder\Email.png"
-
-#!  You cannot call a method on a null-valued expression
 #met en silience toutes les erreurs dans mon code
-# $ErrorActionPreference = "SilentlyContinue"  
+$ErrorActionPreference = "SilentlyContinue"  
 
 # Charger l'assembly System.Drawing
 [System.Reflection.Assembly]::LoadWithPartialName('System.Drawing')
@@ -31,8 +24,8 @@ foreach ($file in $files) {
     # Charger l'image
     $image =[System.Drawing.Image]::FromFile($file)
     Write-Host "$image"
-    # Définir le nouveau nom de fichier)
-   ; 
+    # Définir le nouveau nom de fichier);
+
     $newFile = $file.BaseName + ".jpeg"
     Write-Host "$newFile"    
     $newFileJpeg = $folder + $newFile
@@ -40,11 +33,9 @@ foreach ($file in $files) {
     # Enregistrer l'image au format JPEG 
     $Jpeg = [System.Drawing.Imaging.ImageFormat]::Jpeg
     $image.Save($newFileJpeg, $Jpeg)
-    
-    # Message de verification
-    if(Test-Path $newFileJpeg ){
-        
 
+    # Message de verification
+    if(Test-Path $newFileJpeg ){ v 
         Write-Host "Le fichier $file a été converti en $newFile"
         #marquer un temps d'arrêt
         $image.Dispose() #permet de liberer les ressources qui ont été utilisé par conversion d'image
@@ -54,10 +45,6 @@ foreach ($file in $files) {
         Write-Host "Le fichier $file n'a pas été converti en Jpeg"
     }    
     Start-Sleep -Seconds 2
-
-    
-    
-    
 
     #creation d'un tableau et ajouter les nouveaux fichiers crées
     # $list_new_file.add($newFile)
