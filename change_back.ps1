@@ -1,5 +1,7 @@
 $folder = "C:\Users\ikhela\Pictures\"
 
+# ça ne s'affiche pas et je ne sais même pas pourquoi , il faut que j'ai une autre approche du truck
+
 # $imageFiles = Get-childItem -Path $folfer -Filter *.jpg,*.png
 $imageFiles = Get-childItem -path $folder | Where-Object{$_.Extension -eq "*.jpg" -or $_.Extension -eq ".png" }
 
